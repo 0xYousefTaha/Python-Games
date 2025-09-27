@@ -1,7 +1,9 @@
 # Comparison Game
 
 This game challenges players to guess who has more followers, keeping track of your score until you make a wrong choice.
-   ![Project image](./assets/compersion.png)
+   <div align="center">
+        <img src="./assets/compersion.png" alt="Project image"/>
+    </div>  
 ## Features
 
 - Randomly selects two items to compare.
