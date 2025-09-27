@@ -18,7 +18,7 @@ A collection of simple and fun games implemented in Python.
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/Python-Games.git
+   git clone https://github.com/0xYousefTaha/Python-Games.git
    cd Python-Games
    ```
 2. Run a game:
