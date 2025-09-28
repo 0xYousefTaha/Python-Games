@@ -11,9 +11,7 @@ logo = \
       |  \/ K|                            _/ |                
       `------'                           |__/           
 """
-                   
-
-
+   
 cards= [1,2,3,4,5,6,7,8,9,10,10,10]
 print(logo)
 
@@ -67,53 +65,45 @@ def Check_for_winner(x=your_sum,y=computer_sum) :
     else:
         return "You lose 😤"
 
-
-
 another_card = True
-while another_card :
-    
-    while True: 
-        y = input("Type 'yes' to get another card or 'no' to pass: ").strip().lower()
 
-        if y == 'yes' or y == 'no':
-            break  # valid input, exit the loop
+while another_card:
+    # Input validation loop
+    while True: 
+
+        y = input("Type 'yes' to get another card or 'no' to pass: ").strip().lower()
+        if y in {'yes', 'no'}:
+            break
         else:
             print("Invalid input. Please type 'yes' or 'no' only.") 
 
     if y== 'yes' :
-        #User
+        # User draws a card
         your_card.append(choice(cards))
         your_sum +=your_card[-1]
         yours = f'your card is {your_card}  Total is :{your_sum}'
-
         #Computer
         computer_card.append(choice(cards))
         computer_sum+=computer_card[-1]
-        computer=  f'Computer card is {computer_card[0]},{computer_card[1]}'
-        print(yours)
-        print(computer)
+        computer = f'Computer cards: {computer_card[0]}, {computer_card[1]}' if len(computer_card) >= 2 else f'Computer card: {computer_card[0]}'
+        
+        # Show current state
+        print(yours)    
+        print(computer) 
+        
 
+        # 🚨 Check if anyone is over 31 and end game
+        if your_sum > 31 or computer_sum > 31:
+            print("\nGame Over - Someone went over 31!\n")
+            print(f'Your score: {your_sum}')
+            print(f'Computer score: {computer_sum}   {computer_card}')
+            print(Check_for_winner(your_sum, computer_sum))
+            break
+    
     else :
+        # User chose to pass — end the game
         another_card= False
+        print("\nFinal Results:\n")
         print(f'Your score is :{your_sum}')
         print(f'computer score is :{computer_sum}   {computer_card}')
         print(Check_for_winner(your_sum,computer_sum))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
