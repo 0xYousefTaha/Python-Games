@@ -1,4 +1,3 @@
-from cmath import log
 from random import * 
 
 logo = \
@@ -13,12 +12,6 @@ logo = \
       `------'                           |__/           
 """
                    
-
-
-x=input("Do you want to play black jack Game ? Type 'Yes' or 'No"  ).title()
-
-
-# def BlackJack() :
 
 
 cards= [1,2,3,4,5,6,7,8,9,10,10,10]
@@ -51,22 +44,22 @@ print(computer)
 def Check_for_winner(x=your_sum,y=computer_sum) :
     """Game Instructions """
 
-    if x > 21 and y > 21:
+    if x > 31 and y > 31:
         return "No Winner ."
 
     if x == y:
         return "Draw 🙃"
     
-    elif y == 21:
+    elif y == 31:
         return "Lose, opponent has Blackjack 😱"
     
-    elif x == 21:
+    elif x == 31:
         return "Win with a Blackjack 😎"
     
-    elif x > 21:
+    elif x > 31:
         return "You went over. You lose 😭"
     
-    elif y > 21:
+    elif y > 31:
         return "Opponent went over. You win 😁"
     
     elif x > y:
@@ -79,9 +72,15 @@ def Check_for_winner(x=your_sum,y=computer_sum) :
 another_card = True
 while another_card :
     
-    y=input ("Type 'Yes' to get another card or 'no' to pass :")
-    
-    if y == 'yes' :
+    while True: 
+        y = input("Type 'yes' to get another card or 'no' to pass: ").strip().lower()
+
+        if y == 'yes' or y == 'no':
+            break  # valid input, exit the loop
+        else:
+            print("Invalid input. Please type 'yes' or 'no' only.") 
+
+    if y== 'yes' :
         #User
         your_card.append(choice(cards))
         your_sum +=your_card[-1]
@@ -97,7 +96,7 @@ while another_card :
     else :
         another_card= False
         print(f'Your score is :{your_sum}')
-        print(f'computer score is :{computer_sum}')
+        print(f'computer score is :{computer_sum}   {computer_card}')
         print(Check_for_winner(your_sum,computer_sum))
 
 
