@@ -1,7 +1,6 @@
 
 
 #Gussing The Number From 1 to 100 
-import difflib
 import random 
 print("""
    ___                       _____ _                __                 _                
@@ -16,15 +15,21 @@ The_Correct_number= random.randint(1,100)
 
 print("Welcome to The Number Gussing name ")
 print("I am Thinking in a number between 1 and 100 .")
-difficulity=input("Choose The difficulity . 'easy' or 'hard' ")
+#Validating The Input  
+while True:
+    difficulty = input("Choose The difficulty . 'easy' or 'hard' ").lower().strip()
+    if difficulty not in ['easy', 'hard']:
+         print("Invalid input. Please enter 'easy' or 'hard'.")
+    else:
+        break 
 
-if difficulity == 'easy' :
+if difficulty == 'easy' :
     lives= 10
     lives_sy = ['❤','❤','❤','❤','❤','❤','❤','❤','❤','❤']
     print(f"\nYou have ({lives}) attempts to guess the number . ")
     print(lives_sy)
 
-elif difficulity == 'hard' :
+elif difficulty == 'hard' :
     lives = 5 
     lives_sy = ['❤','❤','❤','❤','❤']
     print(f"\nYou have ({lives}) attempts to guess the number . ")
@@ -35,16 +40,24 @@ playing = True
 
 while playing:
 
-    gussing=int(input("what is your guess:  "))
-#Kill One of His Life If False
+    #Validating The Input If It Is A Number  
+    while True:
+            guess_input = input("what is your guess:  ")
+            if guess_input.strip().isdigit():
+                gussing = int(guess_input)
+                break
+            else:
+                print("Invalid input. Please enter a number.")
+
+
+
     if gussing != The_Correct_number :
         lives -=1 
         lives_sy.pop()
         print(f"\nYou Still Have Only ({lives}) attempts")
         print(lives_sy)
-#     print(live,sep="\n",end="" )
-# print('\n')
-#Checking For The Number
+
+    #Checking For The Number If It Is Correct or Not 
     if gussing == The_Correct_number :
         playing = False 
         print(f"\nYou Got It The Correct Number is :{gussing}")
@@ -55,12 +68,11 @@ while playing:
     elif gussing < The_Correct_number :
         print("Try higher number .\n")
 
-#End The Game if his life is done . 
+    #End The Game if his life is done . 
     if lives == 0 :
         playing = False 
         print(f"Game Over The Correct Number Was :{The_Correct_number}")
     
-
 
 
 
